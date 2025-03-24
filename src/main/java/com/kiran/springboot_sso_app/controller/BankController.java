@@ -3,6 +3,7 @@ package com.kiran.springboot_sso_app.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +11,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api/v1")
 class BankController {
     private final Map<Long, Double> accounts = new HashMap<>();
     private long accountCounter = 1;
+
+    @GetMapping("/contact")
+    public String getContactInfo() {
+        return "<h2>Contact us at support@gmail.com</h2>";
+    }
 
     @GetMapping("/user")
     public Map<String, Object> getUserDetails(@AuthenticationPrincipal OidcUser user) {

@@ -21,7 +21,7 @@ public class SpringBootSsoAppApplication {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.authorizeHttpRequests(auth ->
-						auth.requestMatchers("/", "/public/**").permitAll()
+						auth.requestMatchers("/api/v1/contact", "/public/**").permitAll()
 						.anyRequest().authenticated())
 				.oauth2Login(Customizer.withDefaults());
 		return http.build();
